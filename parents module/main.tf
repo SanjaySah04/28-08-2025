@@ -9,7 +9,7 @@ module "v_net_module" {
   v_net_name = "v_net_1"
   rg_name ="rg"
   rg_location = "Central India"
-  add_space = [ "10.0.0.0/16" ]
+  add_space = [ "20.0.0.0/16" ]
 }
 module "subnet_module" {
   depends_on = [ module.v_net_module ]
@@ -18,7 +18,7 @@ module "subnet_module" {
   rg_name ="rg"
   rg_location = "Central India"
   v_net_name = "v_net_1"
-  add_prefixes =["10.0.0.0/24"]
+  add_prefixes =["20.0.0.0/24"]
 }
 module "nic_module" {
     depends_on = [ module.rg_module, module.subnet_module]
@@ -28,4 +28,5 @@ module "nic_module" {
   subnet_name = "subnet_1"
   v_net_name = "v_net_1"
   nic_name = "nic_1"
+
 }
